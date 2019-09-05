@@ -1,0 +1,67 @@
+<div id="dice-container">
+	<p id="titleRoller">Dice Roller</p>
+	<p class="bigText">Resultat: <br/><span id="all-rolls" class="bigText grey"><?php if (isset($_POST['rollFullResult'])) { echo $_POST['rollFullResult']; } ?></span><span id="dice-roll"><?php if (isset($_POST['rollResult'])) { echo $_POST['rollResult']; }; ?></span></p>
+
+
+	<div class="tab">
+		<button class="tablinks" onclick="openTab(event, 'dice')">Lancer les dés</button>
+		<button class="tablinks" onclick="openTab(event, 'rolls')">Résultats</button>
+	</div>
+
+
+
+	<div id="dice" class="tabcontent container-diceInput">
+		<div class="w-50">
+			<p class="w-90">Nombre de D2<br>
+				<input type="number" id="dice-2" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D4<br>
+				<input type="number" id="dice-4" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D6<br>
+				<input type="number" id="dice-6" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D8<br>
+				<input type="number" id="dice-8" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+		</div>
+		<div class="w-50">
+			<p class="w-90">Nombre de D10<br>
+				<input type="number" id="dice-10" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D12<br>
+				<input type="number" id="dice-12" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D20<br>
+				<input type="number" id="dice-20" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+			<p class="w-90">Nombre de D100<br>
+				<input type="number" id="dice-100" class="number-of-dice" value="0" min="0" step="1">
+			</p>
+		</div>
+		<div class="container-mod">
+
+			<p>Modificateur<br>
+				<input type="number" id="modifier" value="0">
+			</p>
+
+			<label for="display-all-cb">Afficher le résultat de chaque dés ? 
+				<input type="checkbox" id="display-all-cb">
+			</label><br>
+
+			<button type="button" id="roll-button">Lancer les dés</button>
+			<form id="formDB" action="<?php plugin_dir_url(__FILE__) . 'database.php' ?>" method="POST">
+				<input id="rollResult" type="hidden" name="rollResult" value="">
+				<input id="rollFullResult" type="hidden" name="rollFullResult" value="">
+			</form>
+		</div>
+	</div>
+	
+	<div id="rolls" class="tabcontent container-diceInput">
+		<table id="rolls_hundreds"><tr><th>Lancers Précédents</th></tr><?php showAll() ?></table>
+	</div>
+</div>
+
+
+
+

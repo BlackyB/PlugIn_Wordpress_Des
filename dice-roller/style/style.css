@@ -1,0 +1,101 @@
+#dice-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 25px;
+	text-align: center;
+	border : 1px solid rgba(100,100,100,0.5);
+}
+
+.container-diceInput{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.number-of-dice{
+	width: 100%;
+	min-width: 75px;
+}
+
+.container-mod{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: center;
+	text-align: center;
+}
+
+#titleRoller{
+	font-size: 2rem;
+}
+
+.bigText{
+	font-size: 1.5rem;
+}
+
+.grey{
+	color: grey;
+}
+
+#dice-roll{
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: black;
+}
+
+.w-100{
+	width: 100% !important;
+}
+
+.w-90{
+	width: 90% !important;
+}
+
+.w-50{
+	width: 50% !important;
+}
+
+#roll-button{
+	background-color: #bd1e13;
+}
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #ba3f36;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+	width: 50%;
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #bf0d00;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #bd1e13;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 20px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
