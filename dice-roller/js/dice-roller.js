@@ -32,11 +32,11 @@
 				displayString += (rolls['throwDice'][i] + "( " + rolls['result'][i].join(", ") + " ) <br/>");
 			}
 			if(modifier > 0) {
-				var show = (displayString + " + " + modifier + " = ");
+				var show = (displayString + " + " + modifier);
 			} else if( modifier < 0){
-				var show = (displayString + modifier + " = ");
+				var show = (displayString + modifier);
 			} else {
-				var show = (displayString + " = ");
+				var show = (displayString);
 			}
 			displayTotal('all-rolls', show);
 			document.getElementById('rollFullResult').value = show.toString();

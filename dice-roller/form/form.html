@@ -1,6 +1,6 @@
 <div id="dice-container">
 	<p id="titleRoller">Dice Roller</p>
-	<p class="bigText">Resultat: <br/><span id="all-rolls" class="bigText grey"><?php if (isset($_POST['rollFullResult'])) { echo $_POST['rollFullResult']; } ?></span><span id="dice-roll"><?php if (isset($_POST['rollResult'])) { echo $_POST['rollResult']; }; ?></span></p>
+	<p class="bigText">Resultat: <br/><span id="all-rolls" class="bigText grey"><?php if (isset($_POST['rollFullResult'])) { echo $_POST['rollFullResult']; } ?></span><span id="dice-roll"><?php if (isset($_POST['rollResult'])) { echo $current_user = wp_get_current_user()->display_name . " a obtenu: " .   $_POST['rollResult']; }; ?></span></p>
 
 
 	<div class="tab">

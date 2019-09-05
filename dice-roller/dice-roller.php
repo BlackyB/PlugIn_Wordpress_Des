@@ -44,7 +44,7 @@ if (!class_exists('DiceRoller')) {
 			$html = ob_get_clean();
 			return $html;
 		} else {
-			echo "Vous devez vous identifier pour voir le lanceur de dés";
+			echo '<p class="bigText">Vous devez vous identifier pour voir le lanceur de dés</p>';
 		}
 		}
 
@@ -77,8 +77,10 @@ function createDB(){
 	$charset_collate = $wpdb->get_charset_collate();
 
 	$sql = "CREATE TABLE IF NOT EXISTS`{$wpdb->prefix}jet` (
-	id mediumint(9) NOT NULL AUTO_INCREMENT,
-	roll int(11) NOT NULL,
+	`id` mediumint(9) NOT NULL AUTO_INCREMENT,
+	`date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`roll` int(11) NOT NULL,
+	`name` varchar(255) NOT NULL,
 	PRIMARY KEY  (id)
 ) $charset_collate;";
 
@@ -89,7 +91,7 @@ dbDelta( $sql );
 
 function showAll() {
 	global $wpdb;
-	$result = $wpdb->get_results('SELECT `roll` FROM `wp_jet` ORDER BY ID DESC LIMIT 500');
+	$result = $wpdb->get_results('SELECT `roll` FROM `{$wpdb->prefix}jet` ORDER BY ID DESC LIMIT 500');
 	foreach ($result as $key => $value ) {
 		echo "<tr><th>" . $value->roll . "</th></tr>";
 	}
@@ -97,7 +99,10 @@ function showAll() {
 
 function insertDB(){
 	global $wpdb;
-	$wpdb->insert("{$wpdb->prefix}jet", array("roll" => $_POST['rollResult']));
+	$wpdb->insert("{$wpdb->prefix}jet", array(
+		"roll" => $_POST['rollResult'],
+		"name" => wp_get_current_user()->display_name
+	));
 }
 
 
@@ -106,7 +111,7 @@ function onInit(){
 		new DiceRoller();
 		if (isset($_POST['rollResult'])) {
 			echo "<script>document.getElementById('dice-roll').innerHTML = " . $POST['rollResult'] . "</script>";
-			add_action('init', 'insertDB');
+			insertDB();
 		}
 	}
 }
