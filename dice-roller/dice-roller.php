@@ -91,7 +91,7 @@ dbDelta( $sql );
 
 function showAll() {
 	global $wpdb;
-	$result = $wpdb->get_results('SELECT `roll` FROM `{$wpdb->prefix}jet` ORDER BY ID DESC LIMIT 500');
+	$result = $wpdb->get_results("SELECT `roll` FROM `{$wpdb->prefix}jet` ORDER BY ID DESC LIMIT 500");
 	foreach ($result as $key => $value ) {
 		echo "<tr><th>" . $value->roll . "</th></tr>";
 	}
